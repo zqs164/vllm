@@ -4202,7 +4202,7 @@ class GPUModelRunner(
         ):
             # copy mamba state based on previously collected metadata
             if self.cache_config.mamba_cache_mode == "align":
-                mamba_utils.do_mamba_copy_block(mamba_bufs.preprocess)
+                mamba_utils.do_mamba_copy_block(self._get_mamba_copy_bufs())
             model_output = self._model_forward(
                 input_ids=input_ids,
                 positions=positions,
