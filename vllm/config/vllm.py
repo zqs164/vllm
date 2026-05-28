@@ -2128,8 +2128,8 @@ class VllmConfig:
             and self.cache_config.mamba_block_size != self.model_config.max_model_len
         )
         can_set_mamba = (
-            not vllm_config.scheduler_config.disable_hybrid_kv_cache_manager
-            and vllm_config.kv_transfer_config is not None
+            not self.scheduler_config.disable_hybrid_kv_cache_manager
+            and self.kv_transfer_config is not None
         )
         can_set_mamba = can_set_mamba or self.cache_config.enable_prefix_caching
         if mamba_block_size_is_set and not can_set_mamba:
